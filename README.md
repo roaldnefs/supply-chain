@@ -40,16 +40,17 @@ Before running the Supply Chain project make sure the following dependencies are
 The **Seafood Supply Chain** is based upon the UML diagrams showed below.
 
 ### Activity Diagram
-...
+![Activity diagram of the Seafood Supply Chain](diagrams/activity.png?raw=true "Activity diagram of the Seafood Supply Chain")
 
 ### Sequence Diagram
 ![Sequence diagram of the Seafood Supply Chain](diagrams/sequence.png?raw=true "Sequence diagram of the Seafood Supply Chain")
 
 ### State Diagram
-...
+![State diagram of the Seafood Supply Chain](diagrams/state.png?raw=true "State diagram of the Seafood Supply Chain")
+
 
 ### Class Diagram
-...
+![Class diagram of the Seafood Supply Chain](diagrams/class.png?raw=true "Class diagram of the Seafood Supply Chain")
 
 ## Acknowledgment
 The project is heavily based upon [nd1309-Project-6b-Example-Template](https://github.com/udacity/nd1309-Project-6b-Example-Template), with the modified work by [Roald Nefs](https://github.com/roaldnefs) as part of the [Udacity Blockchain Developer Nanodegree Program](https://www.udacity.com/course/blockchain-developer-nanodegree--nd1309).

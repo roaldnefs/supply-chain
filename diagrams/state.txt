@@ -1,0 +1,32 @@
+@startuml
+'State diagram of the Seafood Supply Chain
+
+header Version 0.0.1
+
+!theme plain
+skinparam handwritten true
+
+mainframe **Seafood Supply Chain**
+
+state Item {
+
+  state Fished : Allows the //Fisher//\nto sell the product
+  state "For Sale" as ForSale : Allows the //Distributor//\nto buy the product from a\n//Fisher//
+  state Sold : Allows the //Distributor//\nto process the product
+  state Processed : Allows the //Distributor//\nto pack the product
+  state Packed : Allows the //Distributor//\nto ship the product to a\n//Retailer//
+  state Shipped : Allows the //Retailer//\nto receive the product from a\n//Distributor//
+  state Received : Allows the //Consumer//\nto purchase the product from a\n//Retailer//
+  state Purchased : Allows the //Consumer//\nto consume the product
+
+  [*] -right-> Fished : fishItem()
+  Fished -down-> ForSale : sellItem()
+  ForSale -right-> Sold : buyItem()
+  Sold -down-> Processed : processItem()
+  Processed -down-> Packed : packItem()
+  Packed -down-> Shipped : shipItem()
+  Shipped -right-> Received : receiveItem()
+  Received -right-> Purchased : purchaseItem()
+  Purchased -right-> [*]
+}
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+'Activity diagram of the Seafood Supply Chain
+
+header Version 0.0.1
+
+!theme plain
+skinparam handwritten true
+
+
+mainframe **Seafood Supply Chain**
+
+|Fisher|
+:fishItem();
+:sellItem();
+|Distributor|
+:buyItem();
+:processItem();
+:packItem();
+:shipItem();
+|Retailer|
+:receiveItem();
+|Consumer|
+:purchaseItem();
+stop
+@enduml

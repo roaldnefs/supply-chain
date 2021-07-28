@@ -1,0 +1,149 @@
+@startuml
+'Class diagram of the Seafood Supply Chain
+
+header Version 0.0.1
+
+!theme plain
+skinparam handwritten true
+
+mainframe **Seafood Supply Chain**
+package base {
+  abstract class Ownable {
+   -origOwner : address payable
+   ..
+   +constructor()
+   +owner()
+   +close()
+   +isOwner()
+   +renouceOwnership()
+   +transferOwnership(address payable)
+   -_transferOwnershop(address payable)
+  }
+}
+
+package core {
+  class SupplyChain {
+    -upc : uint
+    -sku : uint
+    -items : mapping(uint => Item)
+    -itemsHistory : maping(unint => string[])
+    -defaultState : State.Fished
+    ..
+    +constructor()
+    +kill()
+    +fishItem(uint, string...)
+    +sellItem(uint)
+    +buyItem(uint)
+    +processItem(uint)
+    +packItem(uint)
+    +shipItem(uint)
+    +receiveItem(uint)
+    +purchaseItem(uint)
+    +fetchItem(uint)
+    +fetchItem(uint)
+  }
+
+  enum State {
+    Fished
+    ForSale
+    Sold
+    Processed
+    Packed
+    Shipped
+    Received
+    Purchased
+    ..
+  }
+
+  entity Item {
+    sku : uint
+    upc : uint
+    ownerID : address
+    originFisherID : address
+    originFisherName : string
+    originFisherInformation : string
+    originFisherLatitude : string
+    originFisherLongtitude : string
+    productID : unint
+    productNotes : string
+    productPrice : uint
+    itemState : State
+    distributorID : address
+    retailerID : address
+    consumerID : Address
+    ..
+  }
+}
+
+package accesscontrol {
+
+  entity Role {
+    bearer : mapping(address => bool)
+    ..
+  }
+
+  interface Roles {
+    ..
+    #add(Role, address)
+    #remove(Role, address)
+    #has(Role, address)
+  }
+
+  class FisherRole {
+    -fishers : Role
+    ..
+    +constructor()
+    +isFisher(address)
+    +addFisher(address)
+    +renounceFisher()
+    -_addFisher(address)
+    -_removeFisher(address)
+  }
+
+
+  class DistributorRole {
+    -distributors : Role
+    ..
+    +constructor()
+    +isDistributor(address)
+    +addDistributor(address)
+    +renounceDistributor()
+    -_addDistributor(address)
+    -_removeDistributor(address)
+  }
+
+  class RetailerRole {
+    -retailers : Role
+    ..
+    +constructor()
+    +isRetailer(address)
+    +addRetailer(address)
+    +renounceRetailer()
+    -_addRetailer(address)
+    -_removeRetailer(address)
+  }
+
+  class ConsumerRole {
+    -consumers : Role
+    ..
+    +constructor()
+    +isConsumer(address)
+    +addConsumer(address)
+    +renounceConsumer()
+    -_addConsumer(address)
+    -_removeConsumer(address)
+  }
+}
+
+Roles <|-- FisherRole
+Roles <|-- ConsumerRole
+Roles <|-- RetailerRole
+Roles <|-- DistributorRole
+
+
+Ownable <|-- SupplyChain
+FisherRole <|-- SupplyChain
+DistributorRole <|-- SupplyChain
+RetailerRole <|-- SupplyChain
+ConsumerRole <|-- SupplyChain
+@enduml
