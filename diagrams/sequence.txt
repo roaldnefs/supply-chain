@@ -1,0 +1,51 @@
+@startuml
+'Sequence diagram of the Seafood Supply Chain
+
+header Version 0.0.1
+
+!theme plain
+skinparam handwritten true
+
+mainframe **Seafood Supply Chain**
+
+participant "Seafood" as Item
+participant Fisher
+participant Distributor
+participant Retailer
+participant Consumer
+
+activate Item
+activate Fisher
+
+Fisher -> Item: **fishItem()** allows the //Fisher//\nto catch the product
+
+activate Distributor
+
+Fisher -> Distributor: **sellItem()** allows the //Fisher//\nto sell the product to a\n//Distributor//
+Distributor -> Fisher: **buyItem()** allows the\n//Distributor// to buy the product\nfrom a //Fisher//
+
+deactivate Fisher
+
+Distributor -> Item: **processItem()** allows the\n//Distributor// to process the raw\nproducted into a porocessed\nproduct
+Distributor -> Item: **packItem()** allows the\n//Distributor// to pack the\nprocessed product
+
+activate Retailer
+
+Distributor -> Retailer: **shipItem()** allows the\n//Distributor// to ship the product\nto a //Retailer//
+Retailer -> Distributor: **receiveItem()** allows the\n//Retailer// to receive the product\nfrom a //Distributor//
+
+deactivate Distributor
+
+activate Consumer
+
+Consumer -> Retailer: **purchaseItem()** allows the\n//Consumer// to purchase the\nproduct from a //Retailer//
+
+deactivate Retailer
+
+Item -> Consumer: **fetchItem()** allows the\n//Consumer// to fetch data of the\nraw product
+Item -> Consumer: **fetchItem()** allows the\n//Consumer// to fetch data of the\nprocessed product
+
+deactivate Consumer
+
+deactivate Item
+@enduml

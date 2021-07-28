@@ -1,5 +1,5 @@
 <a href="https://github.com/roaldnefs/supply-chain" style="color: black;">
-    <h1 align="center">Supply Chain</h1>
+    <h1 align="center">Seafood Supply Chain</h1>
 </a>
 <p align="center">
     <a href="https://raw.githubusercontent.com/roaldnefs/supply-chain/main/LICENSE">
@@ -11,7 +11,7 @@
             alt="GitHub contributors">
     </a>
     </br>
-    <b>Supply Chain</b> is a DApp supply chain solution backed by the Ethereum platform. The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.
+    <b>Seafood Supply Chain</b> is a DApp seafood supply chain solution backed by the [Ethereum platform](https://ethereum.org/). The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.
     <br />
     <a href="https://github.com/roaldnefs/supply-chain/blob/main/README.md#introduction"><strong>Quick Start »</strong></a>
     <br />
@@ -21,7 +21,7 @@
 </p>
 
 ## Introduction
-Supply Chain is a DApp supply chain solution backed by the Ethereum platform. The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.
+Seafood Supply Chain is a DApp supply chain solution backed by the Ethereum platform. The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.
 
 * ...
 
@@ -36,5 +36,20 @@ Before running the Supply Chain project make sure the following dependencies are
 * Node v16.4.2
 * Web3.js v1.2.4
 
+## Design
+The **Seafood Supply Chain** is based upon the UML diagrams showed below.
+
+### Activity Diagram
+...
+
+### Sequence Diagram
+![Sequence diagram of the Seafood Supply Chain](diagrams/sequence.png?raw=true "Sequence diagram of the Seafood Supply Chain")
+
+### State Diagram
+...
+
+### Class Diagram
+...
+
 ## Acknowledgment
-The project is build as part of the [Udacity Blockchain Developer Nanodegree Program](https://www.udacity.com/course/blockchain-developer-nanodegree--nd1309).
+The project is heavily based upon [nd1309-Project-6b-Example-Template](https://github.com/udacity/nd1309-Project-6b-Example-Template), with the modified work by [Roald Nefs](https://github.com/roaldnefs) as part of the [Udacity Blockchain Developer Nanodegree Program](https://www.udacity.com/course/blockchain-developer-nanodegree--nd1309).
