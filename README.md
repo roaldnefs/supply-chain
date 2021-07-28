@@ -11,7 +11,7 @@
             alt="GitHub contributors">
     </a>
     </br>
-    <b>Seafood Supply Chain</b> is a DApp seafood supply chain solution backed by the [Ethereum platform](https://ethereum.org/). The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.
+    <b>Seafood Supply Chain</b> is a DApp seafood supply chain solution backed by the <a href="https://ethereum.org/">Ethereum platform</a>. The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.
     <br />
     <a href="https://github.com/roaldnefs/supply-chain/blob/main/README.md#introduction"><strong>Quick Start »</strong></a>
     <br />
