@@ -1,0 +1,33 @@
+{
+  "name": "supply-chain",
+  "version": "1.0.0",
+  "description": "Supply Chain is a DApp supply chain solution backed by the Ethereum platform. The smart contracts manage specific user permission controls as well as contracts that track and verify a product's authenticity.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test ./test/supplyChain.js",
+    "dapp": "cd app && npm run dev",
+    "solhint": "./node_modules/.bin/solhint contracts/**/*.sol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roaldnefs/supply-chain.git"
+  },
+  "author": "Roald Nefs <info@roaldnefs.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roaldnefs/supply-chain/issues"
+  },
+  "homepage": "https://github.com/roaldnefs/supply-chain#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.2.0",
+    "solc": "^0.8.6",
+    "solhint": "^3.3.6"
+  },
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.4.2",
+    "truffle": "^5.4.2"
+  }
+}

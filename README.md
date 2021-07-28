@@ -32,9 +32,9 @@ Supply Chain is a DApp supply chain solution backed by the Ethereum platform. Th
 Before running the Supply Chain project make sure the following dependencies are installed:
 
 * Truffle v5.4.0 (core: 5.4.0)
-* Solidity v0.5.16 (solc-js)
+* Solidity v0.8.6 (solc-js)
 * Node v16.4.2
-* Web3.js v1.4.0
+* Web3.js v1.2.4
 
 ## Acknowledgment
 The project is build as part of the [Udacity Blockchain Developer Nanodegree Program](https://www.udacity.com/course/blockchain-developer-nanodegree--nd1309).
