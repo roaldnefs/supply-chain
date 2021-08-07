@@ -205,12 +205,16 @@ contract SupplyChain is Ownable, FisherRole, DistributorRole, RetailerRole, Cons
         paidEnough(items[_upc].productPrice)  // Call modifer to check if buyer has paid enough  
         checkValue(_upc)  // Call modifer to send any excess ether back to buyer
     {
-        // TODO: Update the appropriate fields - ownerID, distributorID, itemState
+        // Update the appropriate fields - ownerID, distributorID, itemState
+        items[_upc].ownerID = msg.sender;
+        items[_upc].distributorID = msg.sender;
+        items[_upc].itemState = State.Sold;
         
-        // TODO: Transfer money to farmer
+        // Transfer money to fisher
+        items[_upc].originFisherID.transfer(items[_upc].productPrice);
         
-        // TODO: emit the appropriate event
-        
+        // Emit the appropriate event
+        emit Sold(_upc);
     }
 
     // Define a function 'processtItem' that allows a distributor to mark an item 'Processed'
