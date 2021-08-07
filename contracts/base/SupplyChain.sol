@@ -147,7 +147,7 @@ contract SupplyChain is Ownable, FisherRole, DistributorRole, RetailerRole, Cons
     }
 
     /// @dev defines a function 'fishItem' that allows a fisher to mark an item 'Fished'
-    function fishtItem(
+    function fishItem(
         uint _upc,
         address _originFisherID,
         string memory _originFisherName,
@@ -269,7 +269,76 @@ contract SupplyChain is Ownable, FisherRole, DistributorRole, RetailerRole, Cons
         
     }
 
-    // TODO: add fuction to fetch raw product details (e.g. fisher name, location, etc.)
+    /// Define fuction to fetch raw product details (e.g. fisher name, location, etc.)
+    function fetchItemBufferRaw(uint _upc) public view returns
+        (
+            uint          itemSKU,
+            uint          itemUPC,
+            address       ownerID,
+            address       originFisherID,
+            string memory originFisherName,
+            string memory originFisherInformation,
+            string memory originFisherLatitude,
+            string memory originFisherLongitude
+        )
+    {
+        // Assign values to the parameters
+        itemSKU=items[_upc].sku;
+        itemUPC=items[_upc].upc;
+        ownerID=items[_upc].ownerID;
+        originFisherID=items[_upc].originFisherID;
+        originFisherName=items[_upc].originFisherName;
+        originFisherInformation=items[_upc].originFisherInformation;
+        originFisherLatitude=items[_upc].originFisherLatitude;
+        originFisherLongitude=items[_upc].originFisherLongitude;
 
-    // TODO: add function to fetch proccessed product detailt (e.g. product ID, price, notes, etc.)
+        return (
+            itemSKU,
+            itemUPC,
+            ownerID,
+            originFisherID,
+            originFisherName,
+            originFisherInformation,
+            originFisherLatitude,
+            originFisherLongitude
+        );
+    }
+
+    // Define function to fetch proccessed product details (e.g. product ID, price, notes, etc.)
+    function fetchItemBufferProcessed(uint _upc) public view returns
+        (
+            uint          itemSKU,
+            uint          itemUPC,
+            uint          productID,
+            string memory productNotes,
+            uint          productPrice,
+            uint          itemState,
+            address       distributorID,
+            address       retailerID,
+            address       consumerID
+        )
+    {
+        // Assign values to the 9 parameters
+        itemSKU=items[_upc].sku;
+        itemUPC=items[_upc].upc;
+        productID=items[_upc].productID;
+        productNotes=items[_upc].productNotes;
+        productPrice=items[_upc].productPrice;
+        itemState=uint8(items[_upc].itemState);
+        distributorID=items[_upc].distributorID;
+        retailerID=items[_upc].retailerID;
+        consumerID=items[_upc].consumerID;
+
+        return (
+            itemSKU,
+            itemUPC,
+            productID,
+            productNotes,
+            productPrice,
+            itemState,
+            distributorID,
+            retailerID,
+            consumerID
+        );
+    }
 }
