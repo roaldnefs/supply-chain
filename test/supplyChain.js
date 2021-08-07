@@ -118,23 +118,133 @@ contract("SupplyChain", accounts => {
     });
 
     it("Testing smart contract function processItem() that allows a distributor to process an item", async () => {
-        // TODO: add test for processItem()
+        const instance = await SupplyChain.deployed();
+
+        // Declare and Initialize a variable for event
+        var eventEmitted = false;
+        
+        // Mark an item as Processed by calling function processItem()
+        let tx = await instance.processItem(upc, {from: distributorID});
+
+        // Check the emmited event Processed()
+        truffleAssertions.eventEmitted(tx, 'Processed', (ev) => {
+            eventEmitted = true;
+            return true;
+        });
+
+        // Retrieve the saved item from the blockchain by calling the fetchItem() functions
+        const resultBufferProcessed = await instance.fetchItemBufferProcessed.call(upc);
+
+        // Verify the result set
+        assert.equal(resultBufferProcessed[5], 3, 'Error: Invalid item State');
+        assert.equal(resultBufferProcessed[6], distributorID, 'Error: Missing or Invalid distributorID');
+        assert.equal(eventEmitted, true, "Invalid event emitted");
     });
 
     it("Testing smart contract function packItem() that allows a distributor to pack an item", async () => {
-        // TODO: add test for packItem()
+        const instance = await SupplyChain.deployed();
+
+        // Declare and Initialize a variable for event
+        var eventEmitted = false;
+        
+        // Mark an item as Packed by calling function packItem()
+        let tx = await instance.packItem(upc, {from: distributorID});
+
+        // Check the emmited event Packed()
+        truffleAssertions.eventEmitted(tx, 'Packed', (ev) => {
+            eventEmitted = true;
+            return true;
+        });
+
+        // Retrieve the saved item from the blockchain by calling the fetchItem() functions
+        const resultBufferProcessed = await instance.fetchItemBufferProcessed.call(upc);
+
+        // Verify the result set
+        assert.equal(resultBufferProcessed[5], 4, 'Error: Invalid item State');
+        assert.equal(resultBufferProcessed[6], distributorID, 'Error: Missing or Invalid distributorID');
+        assert.equal(eventEmitted, true, "Invalid event emitted");
     });
 
     it("Testing smart contract function shipItem() that allows a distributor to ship an item", async () => {
-        // TODO: add test for shipItem()
+        const instance = await SupplyChain.deployed();
+
+        // Declare and Initialize a variable for event
+        var eventEmitted = false;
+        
+        // Mark an item as Shipped by calling function shipItem()
+        let tx = await instance.shipItem(upc, {from: distributorID});
+
+        // Check the emmited event Shipped()
+        truffleAssertions.eventEmitted(tx, 'Shipped', (ev) => {
+            eventEmitted = true;
+            return true;
+        });
+
+        // Retrieve the saved item from the blockchain by calling the fetchItem() functions
+        const resultBufferProcessed = await instance.fetchItemBufferProcessed.call(upc);
+
+        // Verify the result set
+        assert.equal(resultBufferProcessed[5], 5, 'Error: Invalid item State');
+        assert.equal(resultBufferProcessed[6], distributorID, 'Error: Missing or Invalid distributorID');
+        assert.equal(eventEmitted, true, "Invalid event emitted");
     });
 
     it("Testing smart contract function receiveItem() that allows a retailer to receive an item", async () => {
-        // TODO: add test for receiveItem()
+        const instance = await SupplyChain.deployed();
+
+        // Declare and Initialize a variable for event
+        var eventEmitted = false;
+
+        // Add the account that will be calling the receiveItem() function as a retailer
+        await instance.addRetailer(retailerID);
+        
+        // Mark an item as Received by calling function receiveItem()
+        let tx = await instance.receiveItem(upc, {from: retailerID});
+
+        // Check the emmited event Received()
+        truffleAssertions.eventEmitted(tx, 'Received', (ev) => {
+            eventEmitted = true;
+            return true;
+        });
+
+        // Retrieve the saved item from the blockchain by calling the fetchItem() functions
+        const resultBufferRaw = await instance.fetchItemBufferRaw.call(upc);
+        const resultBufferProcessed = await instance.fetchItemBufferProcessed.call(upc);
+
+        // Verify the result set
+        assert.equal(resultBufferRaw[2], retailerID, 'Error: Missing or Invalid ownerID');
+        assert.equal(resultBufferProcessed[5], 6, 'Error: Invalid item State');
+        assert.equal(resultBufferProcessed[7], retailerID, 'Error: Missing or Invalid retailerID');
+        assert.equal(eventEmitted, true, "Invalid event emitted");
     });
 
     it("Testing smart contract function purchaseItem() that allows a consumer to purchase an item", async () => {
-        // TODO: add test for purchaseItem()
+        const instance = await SupplyChain.deployed();
+
+        // Declare and Initialize a variable for event
+        var eventEmitted = false;
+
+        // Add the account that will be calling the purchaseItem() function as a consumer
+        await instance.addConsumer(consumerID);
+        
+        // Mark an item as Purchased by calling function purchaseItem()
+        let tx = await instance.purchaseItem(upc, {from: consumerID, value: web3.utils.toWei('1', "ether")});
+
+        // Check the emmited event Purchased()
+        truffleAssertions.eventEmitted(tx, 'Purchased', (ev) => {
+            eventEmitted = true;
+            return true;
+        });
+
+        // Retrieve the saved item from the blockchain by calling the fetchItem() functions
+        const resultBufferRaw = await instance.fetchItemBufferRaw.call(upc);
+        const resultBufferProcessed = await instance.fetchItemBufferProcessed.call(upc);
+
+        // Verify the result set
+        assert.equal(resultBufferRaw[2], consumerID, 'Error: Missing or Invalid ownerID');
+        assert.equal(resultBufferProcessed[5], 7, 'Error: Invalid item State');
+        assert.equal(resultBufferProcessed[8], consumerID, 'Error: Missing or Invalid consumerID');
+        assert.equal(eventEmitted, true, "Invalid event emitted");
     });
 
     it("Testing smart contract function fetchItemBufferRaw() that allows anyone to fetch item details from blockchain", async () => {
@@ -168,7 +278,7 @@ contract("SupplyChain", accounts => {
         assert.equal(resultBufferProcessed[4], productPrice, 'Error: Missing or Invalid productPrice');
         assert.equal(resultBufferProcessed[5], 7, 'Error: Invalid item State');
         assert.equal(resultBufferProcessed[6], distributorID, 'Error: Missing or Invalid distributorID');
-        assert.equal(resultBufferProcessed[6], retailerID, 'Error: Missing or Invalid retailerID');
-        assert.equal(resultBufferProcessed[6], consumerID, 'Error: Missing or Invalid consumerID');
+        assert.equal(resultBufferProcessed[7], retailerID, 'Error: Missing or Invalid retailerID');
+        assert.equal(resultBufferProcessed[8], consumerID, 'Error: Missing or Invalid consumerID');
     });
 });
