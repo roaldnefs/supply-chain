@@ -1,7 +1,7 @@
 @startuml
 'Class diagram of the Seafood Supply Chain
 
-header Version 0.0.1
+header Version 0.0.2
 
 !theme plain
 skinparam handwritten true
@@ -39,8 +39,8 @@ package core {
     +shipItem(uint)
     +receiveItem(uint)
     +purchaseItem(uint)
-    +fetchItem(uint)
-    +fetchItem(uint)
+    +fetchItemBufferRaw(uint)
+    +fetchItemBufferProcessed(uint)
   }
 
   enum State {

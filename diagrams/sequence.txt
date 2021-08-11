@@ -1,7 +1,7 @@
 @startuml
 'Sequence diagram of the Seafood Supply Chain
 
-header Version 0.0.1
+header Version 0.0.2
 
 !theme plain
 skinparam handwritten true
@@ -42,8 +42,8 @@ Consumer -> Retailer: **purchaseItem()** allows the\n//Consumer// to purchase th
 
 deactivate Retailer
 
-Item -> Consumer: **fetchItem()** allows the\n//Consumer// to fetch data of the\nraw product
-Item -> Consumer: **fetchItem()** allows the\n//Consumer// to fetch data of the\nprocessed product
+Item -> Consumer: **fetchItemBufferRaw()**\nallows the //Consumer// to fetch\ndata of the raw product
+Item -> Consumer: **fetchItemBufferProcessed()**\nallows the //Consumer// to fetch\ndata of the processed product
 
 deactivate Consumer
 
