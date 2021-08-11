@@ -83,8 +83,14 @@ You should now be able to interact with the DApp via: [http://localhost:8080](ht
 ## Deployed to Rinkeby
 The smart contracts have been deployed to the Rinkeby Testnet Network. The information of the _SupplyChain_ contract is listed below:
 
-**Transaction ID:** [0x097ef453cd06d31417a6e7b21a48721c0f11a13ad481d921c5f2fa508efab71c](https://rinkeby.etherscan.io/tx/0x097ef453cd06d31417a6e7b21a48721c0f11a13ad481d921c5f2fa508efab71c)
+**Transaction ID:** [0x097ef453cd06d31417a6e7b21a48721c0f11a13ad481d921c5f2fa508efab71c](https://rinkeby.etherscan.io/tx/0x097ef453cd06d31417a6e7b21a48721c0f11a13ad481d921c5f2fa508efab71c)<br />
 **Contract address:** [0x1Bb4D68246e362D70f0168f7250B19552a2b4e08](https://rinkeby.etherscan.io/address/0x1bb4d68246e362d70f0168f7250b19552a2b4e08)
+
+## Libraries
+The project adopted the following libraries:
+
+* **@truffle/hdwallet-provider:** HD Wallet-enabled Web3 provider. Use it to sign transactions for addresses derived from a 12 or 24 word mnemonic.
+* **truffle-assertion:** additional assertions and utilities for testing Ethereum smart contracts in Truffle unit tests.
 
 ## IPFS
 Although IPFS isn't being used in the project, it could be used to store the product images and host the frontend of the DApp.
